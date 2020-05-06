@@ -1,0 +1,18 @@
+version: '3'
+services: 
+    TeamCity:
+        image: sunpaq/teamcity-ubuntu:armv7
+        ports: 
+            - "8111:8111"
+        volumes: 
+            - ~/teamcity_docker_home/data:/data/teamcity_server/datadir
+            - ~/teamcity_docker_home/logs:/opt/teamcity/logs
+    PSQL:
+        image: postgres
+        restart: always
+        environment: 
+            POSTGRES_PASSWORD: example
+            PGDATA: /var/lib/postgresql/data/pgdata
+        volumes: 
+            - ~/psql_docker_home/data:/var/lib/postgresql/data
+
