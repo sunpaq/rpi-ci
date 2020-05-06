@@ -7,7 +7,8 @@ services:
         volumes: 
             - ~/teamcity_docker_home/data:/data/teamcity_server/datadir
             - ~/teamcity_docker_home/logs:/opt/teamcity/logs
-        command: "/bin/bash"
+        entrypoint: 
+            - /bin/bash
     PSQL:
         image: postgres
         restart: always
