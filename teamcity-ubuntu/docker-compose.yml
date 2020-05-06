@@ -7,6 +7,7 @@ services:
         volumes: 
             - ~/teamcity_docker_home/data:/data/teamcity_server/datadir
             - ~/teamcity_docker_home/logs:/opt/teamcity/logs
+        command: "/bin/bash"
     PSQL:
         image: postgres
         restart: always
@@ -15,4 +16,3 @@ services:
             PGDATA: /var/lib/postgresql/data/pgdata
         volumes: 
             - ~/psql_docker_home/data:/var/lib/postgresql/data
-
