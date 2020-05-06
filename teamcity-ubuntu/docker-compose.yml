@@ -15,4 +15,5 @@ services:
         volumes: 
             - ~/teamcity_docker_home/data:/data/teamcity_server/datadir
             - ~/teamcity_docker_home/logs:/opt/teamcity/logs
-        command: /opt/teamcity/bin/teamcity-server.sh start &
+        command: /opt/teamcity/bin/teamcity-server.sh start & && tail -f /dev/null
+    
