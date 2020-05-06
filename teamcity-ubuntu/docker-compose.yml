@@ -15,8 +15,3 @@ services:
         volumes: 
             - ~/teamcity_docker_home/data:/data/teamcity_server/datadir
             - ~/teamcity_docker_home/logs:/opt/teamcity/logs
-        stdin_open: true
-        tty: true
-        command: /bin/bash
-
-    
