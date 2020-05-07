@@ -1,14 +1,25 @@
 # rpi-ci
-teamcity docker image run on raspberry-pi
 
-# install docker
+multi-arch teamcity docker image:
+- Mac (amd64)
+- PC/Linux (amd64)
+- Raspberry-Pi 1/2 (arm/v7)
+- Raspberry-Pi 3/4 (arm64/v8)
+
+# docker hub
+
+https://hub.docker.com/r/sunpaq/teamcity-ubuntu/tags
+
+# How to use:
+
+## 1.install docker
 
 ```
 curl -sSL https://get.docker.com | sh
 sudo usermod -aG docker pi
 ```
 
-# install docker-compose
+## 2.install docker-compose
 
 ```
 sudo apt-get install -y libffi-dev libssl-dev
@@ -17,14 +28,35 @@ sudo apt-get remove python-configparser
 sudo pip3 install docker-compose
 ```
 
-# run docker-compose
+## 3.run docker-compose
+
+run the following command in the folder contains **docker-compose.yml** file
 
 ```
-cd teamcity-ubuntu
+#start server
 docker-compose up -d
 ```
 
-# enable buildx
+```
+#stop server
+docker-compose down
+```
+
+# How to customize:
+
+## 1.download and unzip the TeamCity tar
+
+put the tarball into **teamcity-ubuntu/dist** folder. then run the following command
+```
+tar zxfv TeamCity-*.tar.gz
+```
+
+please comment out the plugins you need before run this
+```
+./teamcity-ubuntu/remove_plugins.sh
+```
+
+## 2.enable buildx
 
 https://docs.docker.com/buildx/working-with-buildx/
 
@@ -33,15 +65,17 @@ docker buildx create mybuilder
 docker buildx use mybuilder
 ```
 
-# build image
+## 3.build image
+
+platforms: linux/amd64, linux/arm64/v8, linux/arm/v7
 
 ```
-#platforms: linux/amd64, linux/arm64, linux/armv7
+cd teamcity-ubuntu
 docker buildx build --platform linux/amd64 -t sunpaq/teamcity-ubuntu:amd64 . --load
 ```
 
-# push image
+## 4.push image
 
 ```
-docker push sunpaq/teamcity-ubuntu:armv7
+docker push <your-dockhub-id>/teamcity-ubuntu:amd64
 ```
