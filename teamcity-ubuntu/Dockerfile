@@ -13,5 +13,4 @@ COPY dist/TeamCity /opt/teamcity
 
 VOLUME /data/teamcity_server/datadir /opt/teamcity/logs
 
-CMD ["/opt/teamcity/bin/teamcity-server.sh", "start", "&"]
-CMD ["tail", "-f", "/dev/null"]
+CMD /bin/bash /opt/teamcity/bin/teamcity-server.sh start && tail -f /dev/null
