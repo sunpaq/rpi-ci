@@ -12,23 +12,26 @@ https://hub.docker.com/r/sunpaq/teamcity-ubuntu/tags
 
 # How to use:
 
-## 1.install docker
+## 1.install docker & docker-compose
+
+for Mac/PC please refer to the official doc:
+https://www.docker.com/get-started
+
+following step is for raspberry-pi:
 
 ```
+#docker
 curl -sSL https://get.docker.com | sh
 sudo usermod -aG docker pi
-```
 
-## 2.install docker-compose
-
-```
+#docker-compose
 sudo apt-get install -y libffi-dev libssl-dev
 sudo apt-get install -y python3 python3-pip
 sudo apt-get remove python-configparser
 sudo pip3 install docker-compose
 ```
 
-## 3.run docker-compose
+## 2.run docker-compose
 
 run the following command in the folder contains **docker-compose.yml** file
 
