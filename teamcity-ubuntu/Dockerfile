@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 
 RUN apt-get update
-RUN apt-get install -y openjdk-8-jdk postgresql
+RUN apt-get install -y openjdk-8-jdk
 
 ENV TEAMCITY_DATA_PATH=/data/teamcity_server/datadir
 ENV TEAMCITY_LOGS=/opt/teamcity/logs
@@ -13,5 +13,5 @@ COPY dist/TeamCity /opt/teamcity
 
 VOLUME /data/teamcity_server/datadir /opt/teamcity/logs
 
-CMD ["/opt/teamcity/bin/teamcity-server.sh", "start"]
+CMD ["/opt/teamcity/bin/teamcity-server.sh", "start", "&"]
 CMD ["tail", "-f", "/dev/null"]

@@ -36,7 +36,8 @@ docker buildx use mybuilder
 # build image
 
 ```
-docker buildx build --platform linux/amd64, linux/arm64, linux/armv7 . --load
+#platforms: linux/amd64, linux/arm64, linux/armv7
+docker buildx build --platform linux/amd64 -t sunpaq/teamcity-ubuntu:amd64 . --load
 ```
 
 # push image
