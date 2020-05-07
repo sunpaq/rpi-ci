@@ -45,6 +45,22 @@ docker-compose up -d
 docker-compose down
 ```
 
+## 3. setup by teamcity wizard
+
+- open the http://your.server.ip:8111 in browser
+- follow the steps until database setup
+- select the **PostgreSQL**
+- click to install JDBC driver
+- setup db as screenshot
+- use default password 'example' in docker-compose.yml
+
+![](/pics/psql-setup.png)
+
+for setting db table/user/password.
+please refer to PostgreSQL official doc:
+
+https://hub.docker.com/_/postgres
+
 # How to customize:
 
 ## 1.download and unzip the TeamCity tar
